@@ -20,9 +20,9 @@ header{position:sticky;top:0;z-index:20;background:hsl(var(--fond)/.92);backdrop
 .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;font-weight:700;font-size:15px;padding:13px 22px;transition:transform .15s,background .15s;white-space:nowrap}
 .btn:hover{transform:translateY(-1px)}.btn.p{background:hsl(var(--accent));color:#fff}.btn.p:hover{background:hsl(var(--accent)/.9)}
 .btn.s{background:hsl(var(--carte));border:1px solid hsl(var(--bord))}.btn.sm{padding:9px 16px;font-size:14px}
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-block:72px 80px}
+.hero>*,.sysg>*,.infos>*{min-width:0}.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:56px;align-items:center;padding-block:72px 80px}
 .sur{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:hsl(var(--accent))}
-h1{font-size:clamp(36px,5.4vw,60px);line-height:1.04;letter-spacing:-.035em;font-weight:800;margin:16px 0 20px}
+h1{font-size:clamp(30px,5.4vw,60px);overflow-wrap:break-word;hyphens:auto;line-height:1.04;letter-spacing:-.035em;font-weight:800;margin:16px 0 20px}
 .surl{position:relative;isolation:isolate;white-space:normal}
 .surl:before{content:"";position:absolute;inset:.52em -.06em .06em;background:hsl(var(--soft));border-radius:6px;z-index:-1}
 .lead{font-size:18px;color:hsl(var(--gris));max-width:520px}.lead b{color:hsl(var(--texte))}
@@ -73,14 +73,14 @@ footer{padding:36px 0 96px;font-size:14px;color:hsl(var(--gris))}footer .c{displ
 @media (max-width:900px){.hero,.sysg,.infos{grid-template-columns:1fr}.hero{padding-block:44px 56px;gap:36px}.liens{display:none}
 .g3{grid-template-columns:1fr}.galerie{grid-template-columns:1fr 1fr}.galerie img{height:180px}.galerie img:first-child{grid-column:span 2}
 section{padding:64px 0}.fin{padding:36px 28px}.ligne{grid-template-columns:1fr auto}.ligne b,.ligne span+span{display:none}.ligne span{color:hsl(var(--texte));font-weight:600}.nav .btn.s{display:none}}
-@media (max-width:520px){.pts{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.kpi:last-child{display:none}.corps{grid-template-columns:1fr}.cote{display:none}
+@media (max-width:520px){h1{font-size:clamp(28px,8.6vw,40px)}.btn{white-space:normal;text-align:center;justify-content:center;line-height:1.25}.actions .btn,.fin .btn{width:100%}.nav .btn.p{max-width:46vw;font-size:13px}.pts{grid-template-columns:1fr}.kpis{grid-template-columns:1fr 1fr}.kpi:last-child{display:none}.corps{grid-template-columns:1fr}.cote{display:none}
 .marque{font-size:15px}.nav .btn.p{padding:9px 14px}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style></head><body>
 <div class="bande">Proposition de site préparée pour École Professionnelle Salésienne (Saint Jean Bosco) de Cotonou par NURU Technologie. Les textes et les données d'exemple seront remplacés par les vôtres. <a href="https://wa.me/2290159975248?text=Bonjour%2C%20je%20suis%20de%20%C3%89cole%20Professionnelle%20Sal%C3%A9sienne%20%28Saint%20Jean%20Bosco%29%20de%20Cotonou.%20J%27ai%20vu%20la%20proposition%20de%20site%20et%20je%20voudrais%20en%20parler.">En parler</a></div>
 <header><div class="c nav"><a href="#" class="marque"><span class="mono">ÉP</span><span>École Professionnelle Salésienne (Saint Jean Bosco) de Cotonou</span></a>
 <nav class="liens"><a href="#offre">École</a><a href="#systeme">Comment ça marche</a><a href="#infos">Nous trouver</a></nav>
-<div style="display:flex;gap:8px"><a class="btn s sm" href="tel:01 61 35 52 00"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>Appeler</a><a class="btn p sm" href="https://wa.me/2290161355200?text=Bonjour%20%C3%89cole%20Professionnelle%20Sal%C3%A9sienne%20%28Saint%20Jean%20Bosco%29%20de%20Cotonou%2C%20je%20vous%20%C3%A9cris%20depuis%20votre%20site.">Demander une inscription</a></div></div></header>
+<div style="display:flex;gap:8px"><a class="btn s sm" href="tel:01 61 35 52 00"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/></svg>Appeler</a><a class="btn p sm" href="https://wa.me/2290161355200?text=Bonjour%20%C3%89cole%20Professionnelle%20Sal%C3%A9sienne%20%28Saint%20Jean%20Bosco%29%20de%20Cotonou%2C%20je%20vous%20%C3%A9cris%20depuis%20votre%20site.">S&#x27;inscrire</a></div></div></header>
 <main>
 <div class="c hero"><div><span class="sur"><svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>École · Cotonou</span>
 <h1>L&#x27;inscription de votre enfant,<br><span class="surl">sans vous déplacer.</span></h1>
