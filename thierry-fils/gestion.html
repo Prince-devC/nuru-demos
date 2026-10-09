@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Gestion · Thierry & Fils</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#054390">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23054390'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='800' font-size='26' fill='white' text-anchor='middle'%3ETF%3C/text%3E%3C/svg%3E">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  body { background: hsl(var(--doux)) }
+  .cadre { display: grid; grid-template-columns: 248px minmax(0, 1fr); min-height: 100vh }
+  .lat { background: hsl(var(--marine-fonce)); color: #fff; padding: 22px 16px; position: sticky; top: 0; height: 100vh; display: flex; flex-direction: column; gap: 4px }
+  .lat .marque { padding: 4px 8px 22px }
+  .lat .marque small { color: hsl(0 0% 100% / .6) }
+  .lat .mono:after { border-color: hsl(var(--marine-fonce)) }
+  .lat a { display: flex; align-items: center; gap: 12px; padding: 11px 12px; border-radius: 12px; font-weight: 600; font-size: 15px; color: hsl(0 0% 100% / .72) }
+  .lat a:hover, .lat a.on { background: hsl(0 0% 100% / .1); color: #fff }
+  .lat .bas { margin-top: auto; font-size: 12.5px; color: hsl(0 0% 100% / .55); padding: 12px }
+  .zone { padding: 28px 32px 60px; min-width: 0 }
+  .haut { display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 22px }
+  .haut h1 { font-size: 28px }
+  .haut p { color: hsl(var(--gris)) }
+  .avertir { display: flex; gap: 10px; align-items: center; background: hsl(var(--att-doux)); color: hsl(var(--att)); border-radius: 14px; padding: 11px 14px; font-size: 13.5px; font-weight: 600; margin-bottom: 20px }
+  .kpis4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px }
+  .k { background: hsl(var(--carte)); border: 1px solid hsl(var(--bord)); border-radius: 20px; padding: 18px 20px }
+  .k small { color: hsl(var(--gris)); font-weight: 700; font-size: 13px; display: flex; gap: 8px; align-items: center }
+  .k b { display: block; font-size: 28px; letter-spacing: -.02em; margin: 6px 0 2px }
+  .k span { font-size: 13px; font-weight: 700; color: hsl(var(--ok)) }
+  .grille2 { display: grid; grid-template-columns: 1.35fr 1fr; gap: 16px; margin-bottom: 16px }
+  .boite { background: hsl(var(--carte)); border: 1px solid hsl(var(--bord)); border-radius: 22px; padding: 20px; min-width: 0 }
+  .boite h2 { font-size: 18px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px; gap: 10px }
+  .planning { overflow-x: auto }
+  .planning table { border-collapse: separate; border-spacing: 3px; min-width: 620px; width: 100% }
+  .planning th { font-size: 11.5px; color: hsl(var(--gris)); font-weight: 700; text-transform: capitalize }
+  .planning td.nom { font-weight: 700; font-size: 13.5px; white-space: nowrap; padding-right: 10px }
+  .planning td.c { height: 38px; border-radius: 8px; background: hsl(var(--doux)) }
+  .planning td.p { background: hsl(var(--marine)) }
+  .planning td.s { background: hsl(var(--rouge) / .85) }
+  .ligne-t { display: grid; grid-template-columns: 1fr auto; gap: 10px; align-items: center; padding: 12px 0; border-bottom: 1px solid hsl(var(--bord)); font-size: 14px }
+  .ligne-t:last-child { border: 0 }
+  .ligne-t b { display: block }
+  .ligne-t small { color: hsl(var(--gris)) }
+  .ligne-t .d { text-align: right }
+  .barres { display: flex; align-items: end; gap: 8px; height: 150px; padding-top: 10px }
+  .barres div { flex: 1; display: flex; flex-direction: column; justify-content: end; align-items: center; gap: 6px; height: 100%; font-size: 11.5px; color: hsl(var(--gris)); font-weight: 700 }
+  .barres i { width: 100%; border-radius: 8px 8px 4px 4px; background: hsl(var(--marine)) }
+  .barres div:last-child i { background: hsl(var(--rouge)) }
+  .nouveau { animation: entree .6s ease both; background: hsl(var(--marine-doux)); border-radius: 12px; padding-inline: 10px }
+  @keyframes entree { from { opacity: 0; transform: translateY(6px) } }
+  @media (max-width: 1100px) { .kpis4 { grid-template-columns: repeat(2, 1fr) } .grille2 { grid-template-columns: 1fr } }
+  @media (max-width: 820px) {
+    .cadre { grid-template-columns: 1fr }
+    .lat { position: static; height: auto; flex-direction: row; overflow-x: auto; padding: 12px; gap: 6px }
+    .lat .marque { padding: 0 10px 0 0 } .lat .marque span:last-child, .lat .bas { display: none }
+    .lat a { white-space: nowrap; padding: 9px 12px } .lat a span { display: none }
+    .zone { padding: 20px 16px 48px }
+  }
+  @media (max-width: 480px) { .kpis4 { grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 10px } .k { padding: 14px; min-width: 0 } .k b { font-size: 20px; overflow-wrap: anywhere } }
+</style>
+</head>
+<body>
+<div class="cadre">
+  <nav class="lat" aria-label="Gestion">
+    <a href="index.html" class="marque" style="padding-inline:8px"><span class="mono">TF</span><span><b>Thierry & Fils</b><small>Espace de gestion</small></span></a>
+    <a href="#bord" class="on" data-i="layout-dashboard"><span>Tableau de bord</span></a>
+    <a href="#planning" data-i="calendar-check"><span>Planning</span></a>
+    <a href="#ventes" data-i="shopping-bag"><span>Commandes</span></a>
+    <a href="#demandes" data-i="clipboard-list"><span>Demandes</span></a>
+    <a href="#paiements" data-i="wallet"><span>Paiements</span></a>
+    <a href="index.html" data-i="house"><span>Voir le site</span></a>
+    <p class="bas">Conçu par NURU Technologie · aperçu de démonstration</p>
+  </nav>
+  <main class="zone" id="z"></main>
+</div>
+<script type="module">
+import { ICONES } from "./icones.js";
+import { LOGEMENTS } from "./donnees.js";
+const ico = (n) => `<svg class="i" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICONES[n] || ""}</svg>`;
+const e = (t) => String(t ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
+const F = (n) => new Intl.NumberFormat("fr-FR").format(n).replace(/ | /g, " ") + " F";
+document.querySelectorAll("[data-i]").forEach((a) => a.insertAdjacentHTML("afterbegin", ico(a.dataset.i)));
+let H = []; try { H = JSON.parse(localStorage.getItem("tf-historique")) || []; } catch {}
+
+const j0 = new Date(); j0.setHours(0, 0, 0, 0);
+const iso = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+const plus = (n) => { const d = new Date(j0); d.setDate(d.getDate() + n); return d; };
+const court = (s) => new Date(s).toLocaleDateString("fr-FR", { day: "numeric", month: "short" });
+
+/* Les mêmes jours pris que sur le site public, plus ceux réservés depuis ce navigateur. */
+const exemple = { godomey: [3, 4, 9, 10, 11], bidossessi: [2, 6, 7, 13] };
+const occ = {}; LOGEMENTS.forEach((l) => { occ[l.id] = new Map(exemple[l.id].map((n) => [iso(plus(n)), "p"])); });
+H.filter((o) => o.type === "reservation").forEach((o) => { for (let d = new Date(o.du); d <= new Date(o.au); d.setDate(d.getDate() + 1)) { if (o.au !== o.du && iso(d) === o.au) break; occ[o.logement]?.set(iso(d), "s"); } });
+
+const resaEx = [
+  { ref: "TF-R-8K2QD", qui: "M. Hounkpè", l: "Godomey Échangeur", d: `${court(plus(3))} → ${court(plus(5))}`, m: 60000, p: "MTN MoMo", e: "Payée" },
+  { ref: "TF-R-7J1PA", qui: "Mme Adjovi", l: "Bidossèssi · 24 h", d: court(plus(6)), m: 15000, p: "Moov Money", e: "Acompte" },
+  { ref: "TF-R-6H9ZC", qui: "M. Dossou", l: "Godomey Échangeur", d: `${court(plus(9))} → ${court(plus(12))}`, m: 90000, p: "MTN MoMo", e: "Payée" },
+];
+const cmdEx = [
+  { ref: "TF-C-5G3XT", qui: "Awa K.", a: "iPhone 16 Pro 256 Go", m: 820000, p: "MTN MoMo", e: "À livrer" },
+  { ref: "TF-C-4F8LW", qui: "Junior A.", a: "Coque MagSafe × 2", m: 30000, p: "À la réception", e: "Livrée" },
+];
+const miens = H.filter((o) => o.type === "reservation").map((o) => ({ ref: o.ref, qui: o.client?.nom, l: o.nomLogement.split(", ")[1] + " · " + o.formule, d: o.au !== o.du ? `${court(o.du)} → ${court(o.au)}` : court(o.du), m: o.total, p: o.moyenNom, e: o.paye >= o.total ? "Payée" : o.paye ? "Acompte" : "À régler", neuf: 1 }));
+const mesCmd = H.filter((o) => o.type === "commande").map((o) => ({ ref: o.ref, qui: o.client?.nom, a: o.articles.map((a) => `${a.nom} ${a.option}${a.qte > 1 ? " × " + a.qte : ""}`).join(", "), m: o.total, p: o.moyenNom, e: o.mode === "livraison" ? "À livrer" : "À retirer", neuf: 1 }));
+const demandes = H.filter((o) => ["troc", "réparation", "véhicules"].includes(o.type));
+const R = [...miens, ...resaEx], C = [...mesCmd, ...cmdEx];
+const encaisse = R.reduce((s, r) => s + (r.e === "Payée" ? r.m : r.e === "Acompte" ? r.m / 2 : 0), 0) + C.reduce((s, c) => s + (!/réception/i.test(c.p) || c.e === "Livrée" ? c.m : 0), 0);
+const etq = (t) => `<span class="etq ${/Payée|Livrée/.test(t) ? "ok" : /Acompte|livrer|retirer|régler/.test(t) ? "att" : ""}">${e(t)}</span>`;
+const nuitsPrises = Object.values(occ).reduce((s, m) => s + [...m.keys()].filter((k) => k >= iso(j0) && k < iso(plus(14))).length, 0);
+
+const jours = [...Array(14)].map((_, n) => plus(n));
+document.getElementById("z").innerHTML = `
+  <div class="haut" id="bord"><div><h1>Bonjour Thierry</h1><p>${j0.toLocaleDateString("fr-FR", { weekday: "long", day: "numeric", month: "long" })} · voici votre activité.</p></div>
+    <a class="btn p sm" href="index.html#/residences">${ico("plus")}Nouvelle réservation</a></div>
+  <div class="avertir">${ico("info")}<span>Aperçu de démonstration : données d'exemple, plus ce que vous avez réservé ou commandé sur le site depuis ce navigateur (surligné en bleu).</span></div>
+  <div class="kpis4">
+    <div class="k"><small>${ico("wallet")}Encaissé ce mois</small><b>${F(encaisse)}</b><span>Mobile Money vérifié</span></div>
+    <div class="k"><small>${ico("calendar-check")}Réservations</small><b>${R.length}</b><span>${miens.length ? `dont ${miens.length} depuis le site` : "à venir"}</span></div>
+    <div class="k"><small>${ico("shopping-bag")}Commandes</small><b>${C.length}</b><span>${C.filter((c) => c.e !== "Livrée").length} à traiter</span></div>
+    <div class="k"><small>${ico("trending-up")}Occupation 14 jours</small><b>${Math.round(nuitsPrises / 28 * 100)} %</b><span>${nuitsPrises} nuits sur 28</span></div>
+  </div>
+  <div class="boite" id="planning" style="margin-bottom:16px"><h2>Planning des logements <span class="etq">14 prochains jours</span></h2><div class="planning"><table>
+    <tr><th></th>${jours.map((d) => `<th>${d.toLocaleDateString("fr-FR", { weekday: "short" }).slice(0, 3)}<br>${d.getDate()}</th>`).join("")}</tr>
+    ${LOGEMENTS.map((l) => `<tr><td class="nom">${e(l.court)}</td>${jours.map((d) => { const t = occ[l.id].get(iso(d)); return `<td class="c ${t || ""}" title="${t ? "Réservé" : "Libre"}"></td>`; }).join("")}</tr>`).join("")}
+  </table></div><div class="cal-leg" style="margin-top:12px"><span><i></i>Réservé (exemple)</span><span><i class="x" style="background:hsl(var(--rouge)/.85)"></i>Réservé depuis le site</span></div></div>
+  <div class="grille2">
+    <div class="boite"><h2>Réservations <a class="btn s sm" href="#planning">Planning</a></h2>${R.map((r) => `<div class="ligne-t ${r.neuf ? "nouveau" : ""}"><div><b>${e(r.qui)} · ${e(r.l)}</b><small>${e(r.ref)} · ${e(r.d)} · ${e(r.p)}</small></div><div class="d"><b>${F(r.m)}</b>${etq(r.e)}</div></div>`).join("")}</div>
+    <div class="boite"><h2>Encaissements de la semaine</h2><div class="barres">${[["Lun", 45], ["Mar", 30], ["Mer", 60], ["Jeu", 15], ["Ven", 90], ["Sam", 75], ["Auj.", Math.min(100, 20 + miens.length * 25)]].map(([j, h]) => `<div><i style="height:${h}%"></i>${j}</div>`).join("")}</div><p class="note" style="text-align:left">Montants d'exemple</p></div>
+  </div>
+  <div class="grille2" id="ventes">
+    <div class="boite"><h2>Commandes boutique</h2>${C.map((c) => `<div class="ligne-t ${c.neuf ? "nouveau" : ""}"><div><b>${e(c.qui)} · ${e(c.a)}</b><small>${e(c.ref)} · ${e(c.p)}</small></div><div class="d"><b>${F(c.m)}</b>${etq(c.e)}</div></div>`).join("")}</div>
+    <div class="boite" id="demandes"><h2>Demandes troc, réparation, véhicules</h2>${demandes.length ? demandes.map((d) => `<div class="ligne-t nouveau"><div><b style="text-transform:capitalize">${e(d.type)}</b><small>${e(d.texte.split("\n").slice(2, 4).join(" · "))}</small></div><div class="d">${etq("Nouvelle")}</div></div>`).join("") :
+      `<div class="ligne-t"><div><b>Troc · iPhone 13 → iPhone 16 Pro</b><small>Bon état · batterie 87 %</small></div><div class="d">${etq("Offre à faire")}</div></div>
+       <div class="ligne-t"><div><b>Réparation · iPhone 12</b><small>Écran cassé · dépôt demain</small></div><div class="d">${etq("Devis envoyé")}</div></div>
+       <div class="ligne-t"><div><b>Véhicule · location SUV</b><small>3 jours · avec chauffeur</small></div><div class="d">${etq("À rappeler")}</div></div>`}</div>
+  </div>
+  <div class="boite" id="paiements"><h2>Derniers paiements Mobile Money</h2>${[...R, ...C].filter((x) => /MoMo|Moov|carte/i.test(x.p || "")).slice(0, 6).map((x) => `<div class="ligne-t ${x.neuf ? "nouveau" : ""}"><div><b>${e(x.p)} · ${e(x.qui)}</b><small>${e(x.ref)} · confirmé par l'opérateur</small></div><div class="d"><b>${F(x.e === "Acompte" ? x.m / 2 : x.m)}</b>${etq("Payée")}</div></div>`).join("")}</div>`;
+</script>
+</body>
+</html>

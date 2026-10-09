@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Thierry & Fils · Appartements meublés, téléphones et véhicules</title>
+<meta name="description" content="Appartements meublés à Godomey Échangeur et Bidossèssi, smartphones neufs et reconditionnés, troc, réparation, vente et location de véhicules. Réservation et paiement Mobile Money.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#054390">
+<meta property="og:title" content="Thierry & Fils">
+<meta property="og:description" content="Réservez votre appartement meublé, commandez votre iPhone, payez par Mobile Money.">
+<meta property="og:image" content="assets/img/godomey-salon.jpg">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23054390'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='800' font-size='26' fill='white' text-anchor='middle'%3ETF%3C/text%3E%3Ccircle cx='54' cy='54' r='8' fill='%23d22a3c'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="bande">Proposition de site préparée pour <b>Thierry & Fils</b> par NURU Technologie · paiements et disponibilités en mode démonstration</div>
+
+<header>
+  <div class="c nav">
+    <a href="#/" class="marque" aria-label="Thierry & Fils, accueil"><span class="mono">TF</span><span><b>Thierry & Fils</b><small>Vente et location</small></span></a>
+    <nav class="liens" aria-label="Navigation principale">
+      <a href="#/residences">Résidences</a><a href="#/boutique">Boutique</a><a href="#/troc">Troc</a><a href="#/reparation">Réparation</a><a href="#/vehicules">Véhicules</a>
+    </nav>
+    <div class="outils">
+      <button class="panier-btn" id="ouvrir-panier" aria-label="Ouvrir le panier" data-ico="shopping-bag"><em id="compteur" class="cache">0</em></button>
+      <a class="btn p sm" href="#/residences" data-ico="calendar-check">Réserver</a>
+      <button class="burger" id="burger" aria-label="Menu" data-ico="menu"></button>
+    </div>
+  </div>
+  <nav class="menu-mob c" id="menu-mob" aria-label="Navigation mobile">
+    <a href="#/residences">Résidences meublées</a><a href="#/boutique">Boutique</a><a href="#/troc">Troc</a><a href="#/reparation">Réparation</a><a href="#/vehicules">Véhicules</a>
+  </nav>
+</header>
+
+<main id="app"></main>
+
+<footer>
+  <div class="c">
+    <div class="pied-g">
+      <div><a href="#/" class="marque"><span class="mono">TF</span><span><b>Thierry & Fils</b><small>Vente et location</small></span></a>
+        <p style="margin-top:14px;max-width:320px">Appartements meublés, smartphones et véhicules, à Cotonou et Abomey-Calavi.</p></div>
+      <div><h4>Résidences</h4><a href="#/residence/godomey">Godomey Échangeur</a><a href="#/residence/bidossessi">Bidossèssi</a></div>
+      <div><h4>Boutique</h4><a href="#/boutique">Smartphones</a><a href="#/troc">Troc</a><a href="#/reparation">Réparation</a><a href="#/vehicules">Véhicules</a></div>
+      <div><h4>Contact</h4><a href="tel:+2290197153813">01 97 15 38 13</a><a href="https://wa.me/2290197153813" target="_blank" rel="noopener">WhatsApp</a><a href="gestion.html">Espace de gestion</a></div>
+    </div>
+    <div class="signature"><span>© 2026 Thierry & Fils</span><span>Site et système de gestion : <b>NURU Technologie</b>, Abomey-Calavi</span></div>
+  </div>
+</footer>
+
+<a class="btn wa flot" href="https://wa.me/2290197153813?text=Bonjour%20Thierry%20%26%20Fils" target="_blank" rel="noopener" aria-label="Écrire sur WhatsApp" data-ico="message-circle"><span>WhatsApp</span></a>
+
+<div class="voile" id="voile"></div>
+<aside class="tiroir" id="tiroir" aria-label="Panier">
+  <div class="tiroir-tete"><h3>Votre panier</h3><button id="fermer-panier" aria-label="Fermer le panier" data-ico="x"></button></div>
+  <div class="tiroir-corps" id="tiroir-corps"></div>
+  <div class="tiroir-pied" id="tiroir-pied"></div>
+</aside>
+
+<div class="visio" id="visio" role="dialog" aria-label="Photos">
+  <button class="x" aria-label="Fermer" data-ico="x"></button><button class="g" aria-label="Photo précédente" data-ico="chevron-left"></button>
+  <img alt=""><button class="d" aria-label="Photo suivante" data-ico="chevron-right"></button><span class="cpt"></span>
+</div>
+<div class="toast" id="toast" role="status"></div>
+
+<script type="module" src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,363 @@
+/* Thierry & Fils · feuille de style unique.
+   Les couleurs partent de la bannière du client : bleu marine, rouge du logo, blanc. */
+:root {
+  --fond: 216 33% 98%;
+  --texte: 218 40% 12%;
+  --carte: 0 0% 100%;
+  --doux: 216 30% 95%;
+  --gris: 218 12% 42%;
+  --bord: 216 22% 89%;
+  --marine: 214 93% 29%;
+  --marine-fonce: 218 80% 16%;
+  --marine-doux: 214 80% 95%;
+  --rouge: 352 78% 46%;
+  --rouge-doux: 352 90% 96%;
+  --ok: 158 64% 30%;
+  --ok-doux: 152 50% 93%;
+  --att: 30 90% 38%;
+  --att-doux: 38 100% 92%;
+  --ombre: 218 40% 12%;
+  --r: 20px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0 }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100% }
+body { font-family: Manrope, system-ui, sans-serif; background: hsl(var(--fond)); color: hsl(var(--texte)); line-height: 1.6; -webkit-font-smoothing: antialiased }
+a { color: inherit; text-decoration: none }
+img, video { display: block; max-width: 100% }
+button, input, select, textarea { font: inherit; color: inherit }
+button { cursor: pointer; background: none; border: 0 }
+.i { width: 20px; height: 20px; flex: none }
+.c { max-width: 1200px; margin: 0 auto; padding-inline: 20px }
+.cache { display: none !important }
+:focus-visible { outline: 3px solid hsl(var(--marine) / .45); outline-offset: 2px; border-radius: 8px }
+
+/* ── Bandeau de démonstration ─────────────────────────── */
+.bande { background: hsl(var(--marine-fonce)); color: hsl(0 0% 100% / .82); font-size: 13px; text-align: center; padding: 8px 16px }
+.bande b { color: #fff }
+
+/* ── En-tête ──────────────────────────────────────────── */
+header { position: sticky; top: 0; z-index: 40; background: hsl(var(--fond) / .9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid hsl(var(--bord)) }
+.nav { display: flex; align-items: center; justify-content: space-between; height: 70px; gap: 16px }
+.marque { display: flex; align-items: center; gap: 11px; min-width: 0 }
+.mono { width: 40px; height: 40px; border-radius: 12px; background: hsl(var(--marine)); color: #fff; display: grid; place-items: center; font-weight: 800; font-size: 15px; letter-spacing: -.02em; position: relative; flex: none }
+.mono:after { content: ""; position: absolute; right: -3px; bottom: -3px; width: 12px; height: 12px; border-radius: 50%; background: hsl(var(--rouge)); border: 2.5px solid hsl(var(--fond)) }
+.marque b { display: block; font-size: 17px; font-weight: 800; letter-spacing: -.01em; line-height: 1.1; white-space: nowrap }
+.marque small { display: block; font-size: 12px; color: hsl(var(--gris)); font-weight: 600; white-space: nowrap }
+.liens { display: flex; gap: 2px }
+.liens a { padding: 8px 14px; border-radius: 999px; font-weight: 600; font-size: 15px; color: hsl(var(--texte) / .72) }
+.liens a:hover, .liens a.actif { background: hsl(var(--doux)); color: hsl(var(--texte)) }
+.outils { display: flex; align-items: center; gap: 8px }
+.panier-btn { position: relative; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid hsl(var(--bord)); background: hsl(var(--carte)) }
+.panier-btn em { position: absolute; top: -4px; right: -4px; min-width: 20px; height: 20px; padding: 0 5px; border-radius: 999px; background: hsl(var(--rouge)); color: #fff; font-size: 11px; font-weight: 800; font-style: normal; display: grid; place-items: center }
+.burger { display: none; width: 44px; height: 44px; border-radius: 50%; place-items: center }
+.menu-mob { display: none; border-top: 1px solid hsl(var(--bord)); padding: 10px 0 }
+.menu-mob a { display: block; padding: 12px 20px; font-weight: 700 }
+
+/* ── Boutons, puces, étiquettes ───────────────────────── */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border-radius: 999px; font-weight: 700; font-size: 15px; padding: 13px 22px; transition: transform .15s, background .15s, border-color .15s; white-space: nowrap; border: 1px solid transparent }
+.btn:hover { transform: translateY(-1px) }
+.btn:disabled { opacity: .45; cursor: not-allowed; transform: none }
+.btn.p { background: hsl(var(--marine)); color: #fff }
+.btn.p:hover { background: hsl(var(--marine) / .9) }
+.btn.r { background: hsl(var(--rouge)); color: #fff }
+.btn.s { background: hsl(var(--carte)); border-color: hsl(var(--bord)) }
+.btn.s:hover { border-color: hsl(var(--texte) / .3) }
+.btn.wa { background: #1f8f54; color: #fff }
+.btn.sm { padding: 9px 16px; font-size: 14px }
+.btn.plein { width: 100% }
+.sur { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: hsl(var(--marine)) }
+.etq { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; border-radius: 999px; padding: 4px 10px; background: hsl(var(--marine-doux)); color: hsl(var(--marine)) }
+.etq.ok { background: hsl(var(--ok-doux)); color: hsl(var(--ok)) }
+.etq.att { background: hsl(var(--att-doux)); color: hsl(var(--att)) }
+.etq.rg { background: hsl(var(--rouge-doux)); color: hsl(var(--rouge)) }
+.tuile { width: 46px; height: 46px; border-radius: 13px; background: hsl(var(--marine-doux)); color: hsl(var(--marine)); display: grid; place-items: center; flex: none }
+.tuile.rg { background: hsl(var(--rouge-doux)); color: hsl(var(--rouge)) }
+
+/* ── Titres ───────────────────────────────────────────── */
+h1 { font-size: clamp(34px, 5.6vw, 64px); line-height: 1.03; letter-spacing: -.035em; font-weight: 800; overflow-wrap: break-word }
+h2 { font-size: clamp(28px, 3.8vw, 42px); line-height: 1.1; letter-spacing: -.028em; font-weight: 800 }
+h3 { font-size: 18px; font-weight: 700; letter-spacing: -.01em }
+.st { font-size: 17px; color: hsl(var(--gris)); max-width: 640px }
+section { padding-block: 88px }
+.tete { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 40px }
+.tete h2 { margin: 10px 0 12px }
+
+/* ── Accueil : héros vidéo ────────────────────────────── */
+.heros { position: relative; min-height: min(88vh, 820px); display: flex; align-items: end; overflow: hidden; background: hsl(var(--marine-fonce)); color: #fff }
+.diapo { position: absolute; inset: 0 }
+.diapo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; animation: diapo 24s infinite }
+.diapo img:first-child { opacity: 1 }
+@keyframes diapo { 0% { opacity: 0; transform: scale(1.02) } 4% { opacity: 1 } 25% { opacity: 1 } 30% { opacity: 0; transform: scale(1.1) } 100% { opacity: 0 } }
+.videos { display: grid; grid-template-columns: repeat(2, minmax(0, 360px)); gap: 22px }
+.videos figure { display: grid; gap: 12px }
+.videos figcaption { display: flex; justify-content: space-between; align-items: center; font-size: 17px }
+.heros video, .heros .affiche { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover }
+.heros:after { content: ""; position: absolute; inset: 0; background: linear-gradient(180deg, hsl(218 80% 10% / .25) 0%, hsl(218 80% 10% / .55) 45%, hsl(218 80% 8% / .92) 100%) }
+.heros .c { position: relative; z-index: 2; width: 100%; padding-block: 120px 64px }
+.heros .sur { color: #fff; background: hsl(0 0% 100% / .14); border: 1px solid hsl(0 0% 100% / .22); padding: 6px 14px; border-radius: 999px; backdrop-filter: blur(6px) }
+.heros h1 { margin: 20px 0 18px; max-width: 820px }
+.heros h1 span { color: hsl(214 100% 82%) }
+.heros p.lead { font-size: 19px; color: hsl(0 0% 100% / .82); max-width: 580px }
+.heros .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 30px }
+.heros .btn.s { background: hsl(0 0% 100% / .12); color: #fff; border-color: hsl(0 0% 100% / .3) }
+.chiffres { display: flex; gap: 36px; flex-wrap: wrap; margin-top: 48px; padding-top: 28px; border-top: 1px solid hsl(0 0% 100% / .18) }
+.chiffres b { display: block; font-size: 26px; font-weight: 800; letter-spacing: -.02em }
+.chiffres small { color: hsl(0 0% 100% / .7); font-size: 14px }
+
+/* ── Les trois univers ────────────────────────────────── */
+.univers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px }
+.univ { position: relative; border-radius: 26px; overflow: hidden; min-height: 420px; display: flex; align-items: end; color: #fff; isolation: isolate; background: hsl(var(--marine-fonce)) }
+.univ img, .univ .illu { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; transition: transform .6s }
+.univ:hover img { transform: scale(1.04) }
+.univ:after { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(180deg, transparent 30%, hsl(218 80% 8% / .88)) }
+.univ div { padding: 26px }
+.univ h3 { font-size: 24px; margin: 10px 0 6px }
+.univ p { color: hsl(0 0% 100% / .8); font-size: 15px }
+.univ .etq { background: hsl(0 0% 100% / .16); color: #fff }
+.univ .fl { display: inline-flex; gap: 6px; align-items: center; margin-top: 14px; font-weight: 700 }
+.illu-auto { display: grid; place-items: center; background: radial-gradient(circle at 70% 30%, hsl(352 70% 42% / .55), transparent 55%), radial-gradient(circle at 30% 40%, hsl(214 80% 38%), hsl(218 80% 12%) 75%) }
+.illu-auto svg { width: 62%; color: #fff; opacity: .92; transform: translateY(-30px) }
+.illu-tel { display: grid; place-items: center; background: radial-gradient(circle at 50% 35%, hsl(214 80% 40%), hsl(218 80% 14%) 70%) }
+
+/* ── Cartes logement ──────────────────────────────────── */
+.logements { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px }
+.logement { background: hsl(var(--carte)); border: 1px solid hsl(var(--bord)); border-radius: 26px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow .2s, transform .2s }
+.logement:hover { box-shadow: 0 24px 48px -20px hsl(var(--ombre) / .25); transform: translateY(-2px) }
+.logement .vis { position: relative; aspect-ratio: 4 / 3; overflow: hidden; background: hsl(var(--doux)) }
+.logement .vis img { width: 100%; height: 100%; object-fit: cover }
+.logement .vis .etq { position: absolute; left: 16px; top: 16px; background: hsl(var(--carte)); color: hsl(var(--texte)) }
+.logement .vis .etq.ok { color: hsl(var(--ok)) }
+.logement .corps { padding: 22px 24px 24px; display: flex; flex-direction: column; gap: 10px; flex: 1 }
+.logement .lieu { display: flex; gap: 6px; align-items: center; color: hsl(var(--gris)); font-size: 14px; font-weight: 600 }
+.logement h3 { font-size: 21px }
+.logement .equip { display: flex; gap: 8px; flex-wrap: wrap }
+.logement .pied { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 14px; border-top: 1px solid hsl(var(--bord)) }
+.prix b { white-space: nowrap; font-size: 22px; font-weight: 800; letter-spacing: -.02em }
+.prix small { color: hsl(var(--gris)); font-weight: 600 }
+
+/* ── Fiche logement ───────────────────────────────────── */
+.fil { display: flex; gap: 8px; align-items: center; font-size: 14px; color: hsl(var(--gris)); font-weight: 600; padding-top: 28px }
+.fil a:hover { color: hsl(var(--texte)) }
+.fiche-tete { display: flex; justify-content: space-between; align-items: end; gap: 20px; flex-wrap: wrap; margin: 14px 0 24px }
+.fiche-tete h1 { font-size: clamp(30px, 4.4vw, 48px) }
+.galerie { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 230px 230px; gap: 10px; border-radius: 26px; overflow: hidden }
+.galerie button { position: relative; overflow: hidden; background: hsl(var(--doux)) }
+.galerie button:first-child { grid-row: span 2 }
+.galerie img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s }
+.galerie button:hover img { transform: scale(1.04) }
+.galerie .plus { position: absolute; right: 14px; bottom: 14px; background: hsl(var(--carte)); color: hsl(var(--texte)); padding: 8px 14px; border-radius: 999px; font-size: 14px; font-weight: 700; display: flex; gap: 6px; align-items: center }
+.fiche { display: grid; grid-template-columns: minmax(0, 1fr) 400px; gap: 48px; align-items: start; padding-block: 40px 88px }
+.bloc { padding-block: 30px; border-bottom: 1px solid hsl(var(--bord)) }
+.bloc:first-child { padding-top: 0 }
+.bloc h2 { font-size: 24px; margin-bottom: 14px }
+.bloc p { color: hsl(var(--gris)) }
+.equipements { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px }
+.equipements div { display: flex; gap: 12px; align-items: center; font-weight: 600 }
+.equipements .i { color: hsl(var(--marine)) }
+.video-cadre { border-radius: 22px; overflow: hidden; background: #000; max-width: 360px; aspect-ratio: 9 / 16 }
+.video-cadre video { width: 100%; height: 100%; object-fit: cover }
+.media-duo { display: grid; grid-template-columns: 360px 1fr; gap: 24px; align-items: start }
+.regles div { display: flex; gap: 12px; padding: 10px 0; color: hsl(var(--gris)) }
+.regles .i { color: hsl(var(--marine)); margin-top: 2px }
+.carte-plan { border-radius: 22px; overflow: hidden; border: 1px solid hsl(var(--bord)); height: 300px; background: hsl(var(--doux)) }
+.carte-plan iframe { width: 100%; height: 100%; border: 0 }
+
+/* ── Module de réservation ────────────────────────────── */
+.resa { position: sticky; top: 96px; background: hsl(var(--carte)); border: 1px solid hsl(var(--bord)); border-radius: 26px; padding: 24px; box-shadow: 0 24px 48px -24px hsl(var(--ombre) / .22) }
+.resa .prix { margin-bottom: 18px }
+.formules { display: grid; gap: 8px; margin-bottom: 18px }
+.formule { display: flex; justify-content: space-between; align-items: center; padding: 13px 16px; border: 1.5px solid hsl(var(--bord)); border-radius: 14px; font-weight: 600; text-align: left; transition: border-color .15s, background .15s }
+.formule small { display: block; font-size: 13px; color: hsl(var(--gris)); font-weight: 500 }
+.formule b { font-weight: 800 }
+.formule[aria-pressed="true"] { border-color: hsl(var(--marine)); background: hsl(var(--marine-doux)) }
+.champ { display: grid; gap: 6px; margin-bottom: 14px }
+.champ label { font-size: 13px; font-weight: 700 }
+.champ input, .champ select, .champ textarea { width: 100%; padding: 12px 14px; border-radius: 12px; border: 1.5px solid hsl(var(--bord)); background: hsl(var(--carte)); font-size: 15px; min-height: 48px }
+.champ input:focus, .champ select:focus, .champ textarea:focus { outline: none; border-color: hsl(var(--marine)) }
+.champ textarea { min-height: 96px; resize: vertical }
+.deux { display: grid; grid-template-columns: 1fr 1fr; gap: 10px }
+.recap { background: hsl(var(--doux)); border-radius: 14px; padding: 14px 16px; margin: 6px 0 16px; font-size: 14px }
+.recap div { display: flex; justify-content: space-between; gap: 10px; padding: 3px 0 }
+.recap .total { border-top: 1px solid hsl(var(--bord)); margin-top: 6px; padding-top: 9px; font-weight: 800; font-size: 16px }
+.note { font-size: 12.5px; color: hsl(var(--gris)); text-align: center; margin-top: 10px }
+
+/* Calendrier */
+.cal { border: 1.5px solid hsl(var(--bord)); border-radius: 16px; padding: 14px; margin-bottom: 14px }
+.cal-tete { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; font-weight: 800; text-transform: capitalize }
+.cal-tete button { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; border: 1px solid hsl(var(--bord)) }
+.cal-tete button:disabled { opacity: .3 }
+.cal-grille { display: grid; grid-template-columns: repeat(7, 1fr); gap: 3px; text-align: center }
+.cal-grille small { font-size: 11px; font-weight: 700; color: hsl(var(--gris)); padding: 4px 0 }
+.jour { aspect-ratio: 1; border-radius: 10px; font-size: 14px; font-weight: 600; display: grid; place-items: center; position: relative }
+.jour:hover:not(:disabled) { background: hsl(var(--doux)) }
+.jour:disabled { color: hsl(var(--gris) / .45); cursor: not-allowed }
+.jour.pris { text-decoration: line-through; color: hsl(var(--rouge) / .6) }
+.jour.dans { background: hsl(var(--marine-doux)); border-radius: 0 }
+.jour.deb, .jour.fin { background: hsl(var(--marine)); color: #fff; border-radius: 10px }
+.cal-leg { display: flex; gap: 14px; font-size: 12px; color: hsl(var(--gris)); margin-top: 10px; flex-wrap: wrap }
+.cal-leg span { display: inline-flex; gap: 6px; align-items: center }
+.cal-leg i { width: 10px; height: 10px; border-radius: 3px; background: hsl(var(--marine)) }
+.cal-leg i.x { background: hsl(var(--rouge) / .5) }
+
+/* ── Tunnel de paiement ───────────────────────────────── */
+.tunnel { display: grid; grid-template-columns: minmax(0, 1fr) 380px; gap: 40px; align-items: start; padding-block: 40px 88px }
+.etapes { display: flex; gap: 8px; margin-bottom: 28px; flex-wrap: wrap }
+.etapes span { display: flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 700; color: hsl(var(--gris)); padding: 8px 14px; border-radius: 999px; background: hsl(var(--doux)) }
+.etapes span.on { background: hsl(var(--marine)); color: #fff }
+.etapes span.fait { background: hsl(var(--ok-doux)); color: hsl(var(--ok)) }
+.panneau { background: hsl(var(--carte)); border: 1px solid hsl(var(--bord)); border-radius: 24px; padding: 28px }
+.panneau h2 { font-size: 24px; margin-bottom: 6px }
+.panneau > p { color: hsl(var(--gris)); margin-bottom: 22px }
+.moyens { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 18px }
+.moyen { display: flex; gap: 12px; align-items: center; padding: 16px; border: 1.5px solid hsl(var(--bord)); border-radius: 16px; text-align: left; font-weight: 700 }
+.moyen small { display: block; font-weight: 500; color: hsl(var(--gris)); font-size: 13px }
+.moyen[aria-pressed="true"] { border-color: hsl(var(--marine)); background: hsl(var(--marine-doux)) }
+.logo-op { width: 42px; height: 42px; border-radius: 12px; display: grid; place-items: center; font-weight: 800; font-size: 12px; flex: none }
+.op-mtn { background: #ffcc00; color: #1a1a1a }
+.op-moov { background: #0059a8; color: #fff }
+.op-carte { background: hsl(var(--texte)); color: #fff }
+.op-liv { background: hsl(var(--doux)); color: hsl(var(--texte)) }
+.attente { text-align: center; padding: 30px 10px }
+.attente .rond { width: 72px; height: 72px; border-radius: 50%; margin: 0 auto 18px; border: 4px solid hsl(var(--marine-doux)); border-top-color: hsl(var(--marine)); animation: tourne 1s linear infinite }
+@keyframes tourne { to { transform: rotate(360deg) } }
+.succes { text-align: center; padding: 10px 0 }
+.succes .coche { width: 76px; height: 76px; border-radius: 50%; background: hsl(var(--ok-doux)); color: hsl(var(--ok)); display: grid; place-items: center; margin: 0 auto 18px }
+.succes .coche .i { width: 38px; height: 38px }
+.ref { font-family: ui-monospace, Menlo, monospace; font-weight: 700; background: hsl(var(--doux)); padding: 4px 10px; border-radius: 8px }
+.resume { position: sticky; top: 96px; background: hsl(var(--carte)); border: 1px solid hsl(var(--bord)); border-radius: 24px; overflow: hidden }
+.resume img { width: 100%; height: 180px; object-fit: cover }
+.resume .in { padding: 20px 22px }
+.resume .recap { margin: 14px 0 0 }
+.demo-pay { display: flex; gap: 10px; align-items: flex-start; background: hsl(var(--att-doux)); color: hsl(var(--att)); border-radius: 14px; padding: 12px 14px; font-size: 13.5px; font-weight: 600; margin-bottom: 18px }
+
+/* ── Boutique ─────────────────────────────────────────── */
+.filtres { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 26px }
+.filtre { padding: 9px 16px; border-radius: 999px; border: 1px solid hsl(var(--bord)); background: hsl(var(--carte)); font-weight: 700; font-size: 14px }
+.filtre[aria-pressed="true"] { background: hsl(var(--texte)); color: #fff; border-color: hsl(var(--texte)) }
+.produits { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 18px }
+.produit { background: hsl(var(--carte)); border: 1px solid hsl(var(--bord)); border-radius: 24px; overflow: hidden; display: flex; flex-direction: column; transition: box-shadow .2s, transform .2s }
+.produit:hover { box-shadow: 0 24px 48px -22px hsl(var(--ombre) / .25); transform: translateY(-2px) }
+.produit .vis { aspect-ratio: 1; display: grid; place-items: center; background: linear-gradient(160deg, hsl(var(--doux)), hsl(var(--carte))); position: relative }
+.produit .vis svg { height: 76%; width: auto; max-width: 70%; filter: drop-shadow(0 18px 24px hsl(var(--ombre) / .18)); transition: transform .4s }
+.produit:hover .vis svg { transform: translateY(-4px) rotate(-2deg) }
+.produit .vis .etq { position: absolute; left: 14px; top: 14px }
+.produit .corps { padding: 18px 20px 20px; display: flex; flex-direction: column; gap: 10px; flex: 1 }
+.produit h3 { font-size: 17px }
+.couleurs { display: flex; gap: 7px }
+.pastille-c { width: 22px; height: 22px; border-radius: 50%; border: 2px solid hsl(var(--carte)); box-shadow: 0 0 0 1.5px hsl(var(--bord)) }
+.pastille-c[aria-pressed="true"] { box-shadow: 0 0 0 2px hsl(var(--marine)) }
+.capacites { display: flex; gap: 6px; flex-wrap: wrap }
+.cap { padding: 6px 11px; border-radius: 10px; border: 1.5px solid hsl(var(--bord)); font-size: 13px; font-weight: 700 }
+.cap[aria-pressed="true"] { border-color: hsl(var(--marine)); background: hsl(var(--marine-doux)); color: hsl(var(--marine)) }
+.produit .pied { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 10px; gap: 10px }
+.services { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 56px }
+.service { background: hsl(var(--carte)); border: 1px solid hsl(var(--bord)); border-radius: 22px; padding: 24px; display: flex; flex-direction: column; gap: 12px }
+.service p { color: hsl(var(--gris)); font-size: 15px }
+
+/* Tiroir du panier */
+.voile { position: fixed; inset: 0; background: hsl(218 60% 8% / .45); z-index: 60; opacity: 0; pointer-events: none; transition: opacity .25s }
+.voile.ouvert { opacity: 1; pointer-events: auto }
+.tiroir { position: fixed; top: 0; right: 0; bottom: 0; width: min(420px, 100vw); background: hsl(var(--fond)); z-index: 61; transform: translateX(100%); transition: transform .3s cubic-bezier(.2, .8, .2, 1); display: flex; flex-direction: column }
+.tiroir.ouvert { transform: none }
+.tiroir-tete { display: flex; justify-content: space-between; align-items: center; padding: 20px 22px; border-bottom: 1px solid hsl(var(--bord)) }
+.tiroir-corps { flex: 1; overflow: auto; padding: 18px 22px }
+.tiroir-pied { padding: 18px 22px; border-top: 1px solid hsl(var(--bord)); background: hsl(var(--carte)) }
+.article { display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid hsl(var(--bord)) }
+.article .mini { width: 64px; height: 64px; border-radius: 14px; background: hsl(var(--doux)); display: grid; place-items: center }
+.article .mini svg { width: 28px }
+.article small { color: hsl(var(--gris)); font-size: 13px; display: block }
+.qte { display: inline-flex; align-items: center; border: 1px solid hsl(var(--bord)); border-radius: 999px; margin-top: 6px }
+.qte button { width: 30px; height: 30px; font-weight: 800 }
+.qte span { min-width: 22px; text-align: center; font-weight: 700; font-size: 14px }
+.vide { text-align: center; color: hsl(var(--gris)); padding: 40px 0 }
+
+/* ── Formulaires de service (troc, réparation, véhicules) */
+.service-page { display: grid; grid-template-columns: .9fr 1.1fr; gap: 48px; align-items: start; padding-block: 48px 88px }
+.etapes-liste { display: grid; gap: 4px; margin-top: 28px }
+.etape-l { display: flex; gap: 16px; padding: 16px; border-radius: 18px }
+.etape-l:hover { background: hsl(var(--doux)) }
+.etape-l b { width: 32px; height: 32px; border-radius: 50%; background: hsl(var(--marine)); color: #fff; display: grid; place-items: center; font-size: 14px; flex: none }
+.etape-l p { color: hsl(var(--gris)); font-size: 15px }
+.choix { display: flex; gap: 8px; flex-wrap: wrap }
+.choix button { padding: 10px 15px; border-radius: 12px; border: 1.5px solid hsl(var(--bord)); font-weight: 700; font-size: 14px; background: hsl(var(--carte)) }
+.choix button[aria-pressed="true"] { border-color: hsl(var(--marine)); background: hsl(var(--marine-doux)); color: hsl(var(--marine)) }
+
+/* ── Bandeau confiance, contact, pied ─────────────────── */
+.confiance { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px }
+.conf { display: flex; gap: 14px; align-items: flex-start; padding: 22px; background: hsl(var(--carte)); border: 1px solid hsl(var(--bord)); border-radius: 22px }
+.conf p { color: hsl(var(--gris)); font-size: 14.5px }
+.appel { background: hsl(var(--marine)); color: #fff; border-radius: 30px; padding: 56px; display: flex; justify-content: space-between; align-items: center; gap: 28px; flex-wrap: wrap; position: relative; overflow: hidden }
+.appel:after { content: ""; position: absolute; right: -80px; top: -80px; width: 280px; height: 280px; border-radius: 50%; background: hsl(var(--rouge) / .9); opacity: .9 }
+.appel > * { position: relative; z-index: 1 }
+.appel p { color: hsl(0 0% 100% / .78); margin-top: 8px }
+.appel .btn.s { background: #fff; color: hsl(var(--marine)); border: 0 }
+footer { padding: 56px 0 110px; margin-top: 88px; border-top: 1px solid hsl(var(--bord)); background: hsl(var(--carte)) }
+.pied-g { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 32px }
+.pied-g h4 { font-size: 14px; margin-bottom: 12px }
+.pied-g a, .pied-g p { display: block; color: hsl(var(--gris)); font-size: 14.5px; padding: 3px 0 }
+.pied-g a:hover { color: hsl(var(--texte)) }
+.signature { margin-top: 36px; padding-top: 22px; border-top: 1px solid hsl(var(--bord)); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13.5px; color: hsl(var(--gris)) }
+.flot { position: fixed; right: 18px; bottom: 18px; z-index: 35; box-shadow: 0 14px 32px -8px hsl(var(--ombre) / .45) }
+
+/* Visionneuse */
+.visio { position: fixed; inset: 0; z-index: 80; background: hsl(218 60% 5% / .94); display: none; align-items: center; justify-content: center }
+.visio.ouvert { display: flex }
+.visio img { max-width: 92vw; max-height: 84vh; border-radius: 14px }
+.visio button { position: absolute; width: 48px; height: 48px; border-radius: 50%; background: hsl(0 0% 100% / .14); color: #fff; display: grid; place-items: center }
+.visio .x { top: 18px; right: 18px }
+.visio .g { left: 18px }
+.visio .d { right: 18px }
+.visio .cpt { position: absolute; bottom: 22px; color: #fff; font-weight: 700; font-size: 14px }
+
+/* Toast */
+.toast { position: fixed; left: 50%; bottom: 24px; transform: translate(-50%, 140%); background: hsl(var(--texte)); color: #fff; padding: 13px 20px; border-radius: 999px; font-weight: 700; font-size: 14px; z-index: 90; transition: transform .3s, opacity .3s; opacity: 0; visibility: hidden; display: flex; gap: 10px; align-items: center; max-width: calc(100vw - 32px) }
+.toast.on { transform: translate(-50%, 0); opacity: 1; visibility: visible }
+
+/* ── Adaptation aux écrans ────────────────────────────── */
+@media (max-width: 1080px) {
+  .liens { display: none }
+  .burger { display: grid }
+  .menu-mob.ouvert { display: block }
+  .fiche, .tunnel { grid-template-columns: 1fr }
+  .resa, .resume { position: static }
+  .confiance { grid-template-columns: repeat(2, 1fr) }
+  .pied-g { grid-template-columns: 1fr 1fr }
+}
+@media (max-width: 860px) {
+  .univers, .logements, .services { grid-template-columns: 1fr }
+  .univ { min-height: 340px }
+  .galerie { grid-template-columns: 1fr 1fr; grid-template-rows: 260px 140px }
+  .galerie button:first-child { grid-column: span 2; grid-row: auto }
+  .galerie button:nth-child(n+4) { display: none }
+  .media-duo, .service-page { grid-template-columns: 1fr }
+  .video-cadre { max-width: 100% ; aspect-ratio: 9 / 14 }
+  section { padding-block: 64px }
+  .appel { padding: 36px 28px }
+}
+@media (max-width: 560px) {
+  .produit .vis { aspect-ratio: 4 / 3 }
+  .videos { grid-template-columns: 1fr }
+  h1 { font-size: clamp(30px, 9vw, 40px) }
+  .heros { min-height: 86vh }
+  .heros p.lead { font-size: 17px }
+  .heros .actions .btn, .appel .btn { width: 100% }
+  .chiffres { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 32px }
+  .chiffres div:last-child { grid-column: span 2 }
+  .chiffres b { font-size: 22px }
+  .heros .c { padding-block: 96px 40px }
+  .confiance, .equipements, .moyens, .pied-g { grid-template-columns: 1fr }
+  .marque small { display: none }
+  .marque b { font-size: 15px }
+  .panneau, .resa { padding: 20px }
+  .deux { grid-template-columns: 1fr }
+  .btn { white-space: normal; text-align: center; line-height: 1.25 }
+  .flot span { display: none }
+  .flot { padding: 14px }
+}
+@media (prefers-reduced-motion: reduce) {
+  .diapo img { animation: none } .diapo img:not(:first-child) { display: none }
+  *, *:before, *:after { transition: none !important; animation: none !important; scroll-behavior: auto !important }
+}
+
+@media (max-width: 560px) { .outils .btn.p { display: none } }
+.en-tunnel .flot { display: none }
